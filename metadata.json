@@ -1,0 +1,6 @@
+{
+  "name": "Hamro BCA",
+  "description": "Comprehensive educational platform for BCA students, teachers, and administrators featuring courses, notes, resources, past questions, and role-based management.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

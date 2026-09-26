@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+/*
+  Hamro BCA design tokens.
+  The Google Fonts (Outfit + Plus Jakarta Sans) are loaded in index.html, but
+  until this block existed the `font-outfit` utility was undefined, so every
+  `font-outfit` class in the app silently fell back to the system font.
+*/
+@theme {
+  --font-outfit: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-jakarta: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+
+  /* Deep navy marketing palette */
+  --color-navy-950: #04060e;
+  --color-navy-900: #070b17;
+  --color-navy-850: #0a1020;
+  --color-navy-800: #0e1526;
+  --color-navy-700: #16203a;
+
+  --color-brand-400: #60a5fa;
+  --color-brand-500: #3b82f6;
+  --color-brand-600: #2563eb;
+  --color-brand-700: #1d4ed8;
+  --color-aqua-400: #22d3ee;
+
+  --animate-float-slow: float-slow 7s ease-in-out infinite;
+  --animate-float-mid: float-mid 5.5s ease-in-out infinite;
+  --animate-glow-pulse: glow-pulse 4s ease-in-out infinite;
+  --animate-marquee: marquee 38s linear infinite;
+  --animate-shimmer: shimmer 2.6s linear infinite;
+
+  @keyframes float-slow {
+    0%,
+    100% {
+      transform: translateY(0) translateX(0);
+    }
+    50% {
+      transform: translateY(-14px) translateX(6px);
+    }
+  }
+
+  @keyframes float-mid {
+    0%,
+    100% {
+      transform: translateY(0) translateX(0);
+    }
+    50% {
+      transform: translateY(-10px) translateX(-8px);
+    }
+  }
+
+  @keyframes glow-pulse {
+    0%,
+    100% {
+      opacity: 0.45;
+    }
+    50% {
+      opacity: 0.85;
+    }
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes shimmer {
+    from {
+      transform: translateX(-120%);
+    }
+    to {
+      transform: translateX(220%);
+    }
+  }
+}
+
+@layer base {
+  html {
+    font-family: var(--font-jakarta);
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /* Respect users who ask for less motion. */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+
+  /* Visible focus ring for keyboard users across the app. */
+  :focus-visible {
+    outline: 2px solid var(--color-brand-400);
+    outline-offset: 2px;
+  }
+}
