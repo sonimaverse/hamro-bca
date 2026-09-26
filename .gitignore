@@ -6,3 +6,8 @@ coverage/
 *.log
 .env*
 !.env.example
+uploads/
+*.pdf
+test-image.png
+test-image-2.png
+test-payload*.json
